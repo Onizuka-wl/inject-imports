@@ -1,0 +1,50 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+.pnpm-debug.log
+
+# Build outputs
+dist/
+build/
+*.tsbuildinfo
+
+# Vite cache
+.vite/
+
+# Unbuild output
+*.d.ts
+types/
+.eslintcache
+
+# IDEs & Editors
+.idea/
+.vscode/
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Env
+.env*
+!.env.example
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Test files
+test-results/
+jest-coverage/
+
+# GitHub actions artifacts
+*.log
+
+# VS Code settings folder (optional, if you're sharing config)
+# .vscode/
+
+# MacOS
+.DS_Store
