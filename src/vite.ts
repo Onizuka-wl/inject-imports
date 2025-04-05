@@ -1,9 +1,16 @@
-import { Plugin } from "vite";
 import { transformInjectImports, InjectImportsOptions } from "./core";
 
-export default function injectImports(
+export interface InjectImportsVitePluginOptions {
+  name: string;
+  enforce?: "pre" | "post";
+  apply?: "serve" | "build" | ((config: any, env: any) => boolean);
+  config?: (...args: any[]) => any;
+  transform?: (...args: any[]) => any;
+}
+
+export default function injectImportsVitePlugin(
   options: InjectImportsOptions = {},
-): Plugin {
+): InjectImportsVitePluginOptions {
   const extensions = [".ts", ".js", ".tsx", ".jsx"];
 
   return {
@@ -12,8 +19,16 @@ export default function injectImports(
 
     transform(code: string, id: string) {
       if (!extensions.some((ext) => id.endsWith(ext))) return;
-      const newCode = transformInjectImports(code, id, options);
-      return newCode === code ? undefined : { code: newCode, map: null };
+
+      const transformedCode = transformInjectImports(code, id, options);
+
+      if (transformedCode !== code) {
+        console.debug(`[inject-imports] Injected imports into: ${id}`);
+      }
+
+      return transformedCode === code
+        ? undefined
+        : { code: transformedCode, map: null };
     },
   };
 }

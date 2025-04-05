@@ -10,7 +10,12 @@ export default function injectImportsBabelPlugin(
       Program(path: any, state: any) {
         const filename = state.file.opts.filename;
         const code = state.file.code;
-        const transformed = transformInjectImports(code, filename, options);
+
+        // 👇 Este paso es importante: asegurate de pasar options.referenceComment si querés el auto-reference.
+        const transformed = transformInjectImports(code, filename, {
+          ...options,
+          referenceComment: options.referenceComment ?? true, // activar por defecto si no se pasa
+        });
 
         if (transformed !== code) {
           const newAst = babel.parse(transformed, {

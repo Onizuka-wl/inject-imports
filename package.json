@@ -16,10 +16,20 @@
     "dev": "unbuild --stub",
     "clean": "rm -rf dist"
   },
+  "pnpm": {
+    "overrides": {
+      "rollup": "3.26.3",
+      "postcss": "8.4.24"
+    }
+  },
   "devDependencies": {
-    "@types/node": "^22.14.0",
-    "typescript": "^5.8.3",
-    "unbuild": "^3.5.0",
-    "vite": "^6.2.5"
+    "@babel/parser": "^7.27.0",
+    "@babel/traverse": "^7.27.0",
+    "@babel/types": "^7.27.0",
+    "@types/node": "22.14.0",
+    "rollup": "3.29.4",
+    "typescript": "5.8.3",
+    "unbuild": "3.5.0",
+    "vite": "5.2.8"
   }
 }

@@ -1,7 +1,9 @@
 import { default as vitePluginInjectImports } from "./vite";
 import { default as babelPluginInjectImports } from "./babel";
-import { transformInjectImports, InjectImportsOptions } from "./core";
 import { default as nextPluginInjectImports } from "./next";
+import { transformInjectImports } from "./core";
+import type { InjectImportsOptions } from "./core";
+import type { InjectImportsVitePluginOptions } from "./vite";
 
 export {
   vitePluginInjectImports,
@@ -9,6 +11,7 @@ export {
   nextPluginInjectImports,
   transformInjectImports,
   InjectImportsOptions,
+  InjectImportsVitePluginOptions,
 };
 
 export function defineInjectImports(options?: InjectImportsOptions): unknown {
